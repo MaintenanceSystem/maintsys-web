@@ -10,10 +10,10 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<div class="flex flex-col">
-	<Topbar/>
-	<div class="flex flex-row">
-		<Sidebar/>
+<div class="flex flex-row">
+	<Sidebar/>
+	<div class="flex flex-col w-full min-h-screen">
+		<Topbar aba={"Dashboard"}/>
 		{@render children()}
 	</div>
-</div>
+</div>	

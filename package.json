@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:maintsys-web": "node dist/maintsys-web/server/server.mjs",
-    "format" : "prettier --write ."
+    "format": "prettier --write ."
   },
   "private": true,
   "packageManager": "npm@10.9.2",

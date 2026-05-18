@@ -1,9 +1,7 @@
-# Package Managers
-package-lock.json
-pnpm-lock.yaml
-yarn.lock
-bun.lock
-bun.lockb
+# Pastas de dependências e builds
+node_modules/
+dist/
+.vscode/
 
-# Miscellaneous
-/static/
+# Arquivos de log
+package-lock.json

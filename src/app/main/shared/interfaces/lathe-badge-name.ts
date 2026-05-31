@@ -1,0 +1,1 @@
+export type ILatheBadgeName = 'Operacional' | 'Atençao' | 'Manutençao'| 'Crítico'

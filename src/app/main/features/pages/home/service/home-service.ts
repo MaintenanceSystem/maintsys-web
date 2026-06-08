@@ -16,24 +16,28 @@ export class HomeService {
     const filter = this._filterByStatus();
     const search = this._filterBySearch();
     const lathes = this.latheStorageService.getLathes();
+    
 
-    if (filter == 'all') {
-      return lathes;
-    }
-
-    return lathes.filter((data) => data.status == filter && (data.name.includes(search) || data.model.includes(search)));
+    return lathes.filter((data) => {
+      const matchesStatus = filter === 'all' || data.status === filter;
+      const matchesSearch = data.name.toLowerCase().includes(search.toLowerCase()) || data.model.toLowerCase().includes(search.toLowerCase());
+      return matchesStatus && matchesSearch;
+    });
   });
 
-
-  setFilter(nextFilter : TLatheFilter) {
+  setFilter(nextFilter: TLatheFilter) {
     this._filterByStatus.set(nextFilter);
   }
 
-  get allLathes() : ILatheConfig[] {
-    return this.latheStorageService.getLathes()
+  get allLathes(): ILatheConfig[] {
+    return this.latheStorageService.getLathes();
   }
 
-  get actualFilter() : TLatheFilter {
-    return this._filterByStatus()
+  get actualFilter(): TLatheFilter {
+    return this._filterByStatus();
+  }
+
+  searchFilter(search : string) {
+    this._filterBySearch.set(search);
   }
 }

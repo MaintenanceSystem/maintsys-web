@@ -1,148 +1,23 @@
 <div class="row g-3 justify-content-center">
   @for (lathe of homeService.getLathesFiltered(); track $index) {
     <div class="col-lg-5 col-sm-6 col-12">
-      <div class="h-100 torno-card">
+      <div class="h-100 lathe-card" (click)="onClick(lathe)">
         <div class="d-flex justify-content-between align-items-center mb-2">
           <div class="d-flex align-items-center gap-2">
             <span [classList]="lathe.status | getDotStatus" class="pulse"></span>
             <span class="id-label">{{lathe.id}}</span>
           </div>
+        </div>
+        <h3 class="mb-0 lathe-name">{{lathe.name}}</h3>
+        <p class="mb-3 lathe-model">{{lathe.model}}</p>
+        <div class="d-flex justify-content-end">
           <span [classList]="lathe.status | getBadgeStatus">
             <i [classList]="lathe.status | getBadgeIcon"></i> {{lathe.status | getBadgeName}}
           </span>
         </div>
-        <h3 class="mb-0 torno-name">{{lathe.name}}</h3>
-        <p class="mb-3 torno-model">{{lathe.model}}</p>
-        <div class="d-flex gap-4">
-          <div class="metric">
-            <span class="metric-label"><i class="bi bi-activity"></i> RPM</span>
-            <span class="metric-value">{{lathe.rmp}}</span>
-          </div>
-          <div class="metric">
-            <span class="metric-label"><i class="bi bi-thermometer-half"></i> Temp</span>
-            <span class="metric-value">{{lathe.temp}}°</span>
-          </div>
-          <div class="metric">
-            <span class="metric-label"><i class="bi bi-lightning-charge"></i> Efic</span>
-            <span class="metric-value">{{lathe.efficiency}}%</span>
-          </div>
-        </div>
       </div>
     </div>
   }
-
-  <!-- <div class="col-lg-5 col-sm-6 col-12">
-    <div class="h-100 torno-card">
-      <div class="d-flex justify-content-between align-items-center mb-2">
-        <div class="d-flex align-items-center gap-2">
-          <span class="status-dot dot-warning pulse-warning"></span>
-          <span class="id-label">TC-02</span>
-        </div>
-        <span class="status-badge badge-warning">
-          <i class="bi bi-exclamation-triangle"></i> Atenção
-        </span>
-      </div>
-      <h3 class="mb-0 torno-name">Torno TC-02</h3>
-      <p class="mb-3 torno-model">Romi Centur 30D</p>
-      <div class="d-flex gap-4">
-        <div class="metric">
-          <span class="metric-label"><i class="bi bi-activity"></i> RPM</span>
-          <span class="metric-value">870</span>
-        </div>
-        <div class="metric">
-          <span class="metric-label"><i class="bi bi-thermometer-half"></i> Temp</span>
-          <span class="metric-value">69°</span>
-        </div>
-        <div class="metric">
-          <span class="metric-label"><i class="bi bi-lightning-charge"></i> Efic</span>
-          <span class="metric-value">74%</span>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-5 col-sm-6 col-12">
-    <div class="h-100 torno-card">
-      <div class="d-flex justify-content-between align-items-center mb-2">
-        <div class="d-flex align-items-center gap-2">
-          <span class="status-dot dot-danger pulse-danger"></span>
-          <span class="id-label">TC-07</span>
-        </div>
-        <span class="status-badge badge-danger">
-          <i class="bi bi-exclamation-triangle"></i> Crítico
-        </span>
-      </div>
-      <h3 class="mb-0 torno-name">Torno TC-07</h3>
-      <p class="mb-3 torno-model">Romi Centur 30D</p>
-      <div class="d-flex gap-4">
-        <div class="metric">
-          <span class="metric-label"><i class="bi bi-activity"></i> RPM</span>
-          <span class="metric-value">1780</span>
-        </div>
-        <div class="metric">
-          <span class="metric-label"><i class="bi bi-thermometer-half"></i> Temp</span>
-          <span class="metric-value">82°</span>
-        </div>
-        <div class="metric">
-          <span class="metric-label"><i class="bi bi-lightning-charge"></i> Efic</span>
-          <span class="metric-value">61%</span>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-5 col-sm-6 col-12">
-    <div class="h-100 torno-card">
-      <div class="d-flex justify-content-between align-items-center mb-2">
-        <div class="d-flex align-items-center gap-2">
-          <span class="status-dot dot-maintenance pulse-maintenance"></span>
-          <span class="id-label">TC-04</span>
-        </div>
-        <span class="status-badge badge-maintenance"> <i class="bi bi-tools"></i> Manutenção </span>
-      </div>
-      <h3 class="mb-0 torno-name">Torno TC-04</h3>
-      <p class="mb-3 torno-model">Sanjo 150D</p>
-      <div class="d-flex gap-4">
-        <div class="metric">
-          <span class="metric-label"><i class="bi bi-activity"></i> RPM</span>
-          <span class="metric-value">0</span>
-        </div>
-        <div class="metric">
-          <span class="metric-label"><i class="bi bi-thermometer-half"></i> Temp</span>
-          <span class="metric-value">25°</span>
-        </div>
-        <div class="metric">
-          <span class="metric-label"><i class="bi bi-lightning-charge"></i> Efic</span>
-          <span class="metric-value">0%</span>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-5 col-sm-6 col-12">
-    <div class="h-100 torno-card">
-      <div class="d-flex justify-content-between align-items-center mb-2">
-        <div class="d-flex align-items-center gap-2">
-          <span class="status-dot dot-success pulse"></span>
-          <span class="id-label">TC-01</span>
-        </div>
-        <span class="status-badge badge-success">
-          <i class="bi bi-check-circle"></i> Operacional
-        </span>
-      </div>
-      <h3 class="mb-0 torno-name">Torno TC-01</h3>
-      <p class="mb-3 torno-model">Romi Tormax 20</p>
-      <div class="d-flex gap-4">
-        <div class="metric">
-          <span class="metric-label"><i class="bi bi-activity"></i> RPM</span>
-          <span class="metric-value">1200</span>
-        </div>
-        <div class="metric">
-          <span class="metric-label"><i class="bi bi-thermometer-half"></i> Temp</span>
-          <span class="metric-value">52°</span>
-        </div>
-        <div class="metric">
-          <span class="metric-label"><i class="bi bi-lightning-charge"></i> Efic</span>
-          <span class="metric-value">91%</span>
-        </div>
-      </div>
-    </div>
-  </div> -->
 </div>
+
+<app-modal />

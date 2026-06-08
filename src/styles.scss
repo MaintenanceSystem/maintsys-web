@@ -12,6 +12,10 @@ body {
   --bg-active-menu: #d4e5f5;
   --border-color: #e2e8f0;
 
+  --metric-icon-bg: #f0f7fc;
+  --btn-cta-bg: #e8523a;
+  --bg-image-placeholder: #1a2332;
+
   --status-success-bg: #def7ec;
   --status-success-text: #03543f;
 
@@ -42,6 +46,10 @@ body.dark-theme {
   --primary-hover: #0ea5e9;
   --bg-active-menu: #334155;
   --border-color: #334155;
+  
+  --metric-icon-bg: #1e3a4a;
+  --btn-cta-bg: #e8523a;
+  --bg-image-placeholder: #0d1520;
 
   --status-success-bg: #052e16;
   --status-success-text: #4ade80;
@@ -54,6 +62,10 @@ body.dark-theme {
 
   --status-danger-bg: #4c0519;
   --status-danger-text: #f87171;
+
+  .lathe-modal .modal-header .btn-close {
+    filter: invert(1);
+  }
 }
 
 .error-container {
@@ -104,4 +116,38 @@ body.dark-theme {
   box-shadow:
     0 0 20px 0 rgba(0, 0, 0, 0.2),
     0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+@keyframes pulse-ring-danger {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 7px rgba(239, 68, 68, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+.dot-success {
+  background-color: var(--status-success-text);
+}
+.dot-warning {
+  background-color: var(--status-warning-text);
+}
+.dot-maintenance {
+  background-color: var(--status-info-text);
+}
+
+.pulse-danger {
+  animation: pulse-ring-danger 0.5s ease-out infinite;
 }

@@ -1,4 +1,4 @@
-.torno-card {
+.lathe-card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: 14px;
@@ -22,39 +22,7 @@
   letter-spacing: 0.03em;
 }
 
-.status-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 100%;
-  flex-shrink: 0;
-  display: inline-block;
-}
 
-@keyframes pulse-ring-danger {
-  0% {
-    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6);
-  }
-  70% {
-    box-shadow: 0 0 0 7px rgba(239, 68, 68, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
-  }
-}
-
-.dot-success {
-  background-color: var(--status-success-text);
-}
-.dot-warning {
-  background-color: var(--status-warning-text);
-}
-.dot-maintenance {
-  background-color: var(--status-info-text);
-}
-
-.pulse-danger {
-  animation: pulse-ring-danger 0.5s ease-out infinite;
-}
 
 .status-badge {
   display: inline-flex;
@@ -90,13 +58,13 @@
   color: var(--status-info-text);
 }
 
-.torno-name {
+.lathe-name {
   font-size: 1rem;
   font-weight: 700;
   color: var(--text-primary);
 }
 
-.torno-model {
+.lathe-model {
   font-size: 0.8rem;
   color: var(--text-secondary);
 }

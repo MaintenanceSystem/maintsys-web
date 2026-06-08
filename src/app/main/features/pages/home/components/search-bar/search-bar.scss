@@ -75,27 +75,4 @@
     color: var(--text-secondary);
     pointer-events: none;
   }
-
-  &__input {
-    background: var(--bg-application);
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    padding: 0.35rem 0.9rem 0.35rem 2rem;
-    font-size: 0.82rem;
-    color: var(--text-primary);
-    width: 200px;
-    outline: none;
-    transition:
-      border-color 0.2s ease,
-      box-shadow 0.2s ease;
-
-    &::placeholder {
-      color: var(--text-secondary);
-    }
-
-    &:focus {
-      border-color: var(--primary-color);
-      box-shadow: 0 0 0 3px rgba(95, 164, 207, 0.15);
-    }
-  }
 }

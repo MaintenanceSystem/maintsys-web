@@ -1,0 +1,85 @@
+@if (modalService.showModal) {
+  <div class="modal-overlay" (click)="modalService.closeModal()">
+    <div class="modal-container" (click)="$event.stopPropagation()">
+      <div class="lathe-modal">
+        <div class="lathe-modal__header">
+          <div class="d-flex align-items-center gap-2">
+            <span [classList]="lathe()?.status! | getDotStatus" class="pulse"></span>
+            <div>
+              <div class="modal-title">{{ lathe()?.name }}</div>
+              <div class="modal-subtitle">{{ lathe()?.id }} · {{ lathe()?.model }}</div>
+            </div>
+          </div>
+          <button class="btn-close-custom" (click)="modalService.closeModal()" aria-label="Fechar">
+            <i class="bi bi-x-lg"></i>
+          </button>
+        </div>
+
+       
+        <div class="lathe-image-area" (click)="startEngine()">
+           @if(testImagem()) {
+              <img [src]="testImagem()" alt="Screenshot da cena 3D" style="max-width: 100%;" />
+            }
+        </div>
+
+        <div class="lathe-modal__body">
+          <p class="process-label">Processo atual</p>
+          <p class="process-value">{{ lathe()?.actualProcess }}</p>
+
+          <div class="metrics-grid">
+            <div class="metric-row">
+              <div class="metric-icon metric-icon--danger">
+                <i class="bi bi-speedometer2"></i>
+              </div>
+              <div>
+                <div class="metric-label">Rotação</div>
+                <div class="metric-value">
+                  {{ lathe()?.rpm }} <span class="metric-unit">RPM</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="metric-row">
+              <div class="metric-icon metric-icon--warning">
+                <i class="bi bi-thermometer-half"></i>
+              </div>
+              <div>
+                <div class="metric-label">Temperatura</div>
+                <div class="metric-value">
+                  {{ lathe()?.temp }} <span class="metric-unit">°C</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="metric-row">
+              <div class="metric-icon metric-icon--info">
+                <i class="bi bi-activity"></i>
+              </div>
+              <div>
+                <div class="metric-label">Vibração</div>
+                <div class="metric-value">
+                  {{ lathe()?.vibration }} <span class="metric-unit">mm/s</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="metric-row">
+              <div class="metric-icon metric-icon--success">
+                <i class="bi bi-lightning-charge"></i>
+              </div>
+              <div>
+                <div class="metric-label">Eficiência</div>
+                <div class="metric-value">
+                  {{ lathe()?.efficiency }} <span class="metric-unit">%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="btn-cta lathe-modal__button">
+            Acessar Painel <i class="ms-1 bi bi-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+}

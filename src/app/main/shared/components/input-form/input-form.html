@@ -1,0 +1,31 @@
+@if (inputFormConfig().hasLabel) {
+  <label [for]="inputFormConfig().inputId" class="form-label label-title">{{
+    inputFormConfig().label
+  }}</label>
+}
+
+@if (inputFormConfig().hasSpecialConfig) {
+  <input
+    [type]="inputFormConfig().typeInput"
+    [classList]="`form-control ${inputFormConfig().inputConfig?.classSpecial}`"
+    [id]="inputFormConfig().inputId"
+    [placeholder]="inputFormConfig().inputConfig?.placeholder"
+    [formField]="inputFormConfig().formData" />
+} @else {
+  @switch (inputFormConfig().type) {
+    @case ('input') {
+      <input
+        [type]="inputFormConfig().typeInput"
+        class="form-control"
+        [id]="inputFormConfig().inputId"
+        [formField]="inputFormConfig().formData" />
+    }
+    @case ('select') {
+      <select [id]="inputFormConfig().inputId" [formField]="$any(inputFormConfig().formData)">
+        @for (option of inputFormConfig().options; track option.label) {
+          <option [value]="option.value">{{ option.label }}</option>
+        }
+      </select>
+    }
+  }
+}

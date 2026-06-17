@@ -1,0 +1,23 @@
+<div class="row g-3 justify-content-center">
+  @for (lathe of homeService.getLathesFiltered(); track $index) {
+    <div class="col-lg-5 col-sm-6 col-12">
+      <div class="h-100 lathe-card" (click)="onClick(lathe)">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <div class="d-flex align-items-center gap-2">
+            <span [classList]="lathe.status | getDotStatus" class="pulse"></span>
+            <span class="id-label">{{lathe.id}}</span>
+          </div>
+        </div>
+        <h3 class="mb-0 lathe-name">{{lathe.name}}</h3>
+        <p class="mb-3 lathe-model">{{lathe.model}}</p>
+        <div class="d-flex justify-content-end">
+          <span [classList]="lathe.status | getBadgeStatus">
+            <i [classList]="lathe.status | getBadgeIcon"></i> {{lathe.status | getBadgeName}}
+          </span>
+        </div>
+      </div>
+    </div>
+  }
+</div>
+
+<app-modal />

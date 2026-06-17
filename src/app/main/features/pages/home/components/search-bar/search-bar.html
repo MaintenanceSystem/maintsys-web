@@ -1,0 +1,29 @@
+<!-- Filter Bar -->
+<div class="row justify-content-center mb-4">
+  <div class="col-xl-10 col-12">
+    <div class="d-flex flex-wrap align-items-center gap-2 filter-bar">
+      <div class="d-flex flex-wrap flex-grow-1 align-items-center gap-2">
+        @for (option of filterOptions; track $index) {
+          <button
+            class="filter-btn"
+            [class.filter-btn--active]="homeService.actualFilter == option.filterStatus"
+            (click)="homeService.setFilter(option.filterStatus)">
+            @if (option.haveDot) {
+              <span [classList]="option.filterStatus | getDotStatus"></span>
+            }
+            {{ option.name }}
+            <span class="filter-count">{{
+              homeService.allLathes.filter(
+                (data) => data.status == option.filterStatus || option.filterStatus == 'all'
+              ).length
+            }}</span>
+          </button>
+        }
+      </div>
+      <div class="filter-search">
+        <i class="bi bi-search filter-search__icon"></i>
+        <app-input-form [inputFormConfig]="specialInputConfig"></app-input-form>
+      </div>
+    </div>
+  </div>
+</div>
